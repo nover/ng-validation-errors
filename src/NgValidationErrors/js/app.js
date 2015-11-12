@@ -5,11 +5,11 @@
     var module = angular.module('helloApp', [
         'ngRoute',
         'ngAnimate',
-        'ngMessage',
         'toastr',
         'helloApp.controllers',
         'navigation.controllers',
-        'errorHandling'
+        'errorHandling',
+        'validationDecorator'
     ]);
 
     module.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {

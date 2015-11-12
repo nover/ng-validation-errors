@@ -1,28 +1,25 @@
 ﻿<div class="row">
-    <form class="form-horizontal col-lg-10 col-md-10" novalidate>
+    <form class="form-horizontal col-lg-10 col-md-10" novalidate validation-decorator>
         <div class="well">
             <div class="form-group">
                 <label for="firstName">First name:</label>
-                <input type="text" class="form-control" id="firstName" ng-model="model.Firstname">
+                <input type="text" class="form-control" id="firstName" name="FirstName" ng-model="model.FirstName">
             </div>
             <div class="form-group">
                 <label for="lastName">Last name:</label>
-                <input type="text" class="form-control" id="lastName" ng-model="model.Lastname">
+                <input type="text" class="form-control" id="lastName" name="LastName" ng-model="model.LastName">
             </div>
             <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" ng-model="model.Email">
+                <input type="email" class="form-control" id="email" name="Email" ng-model="model.Email">
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" id="password" ng-model="model.Password">
+                <input type="password" class="form-control" id="password" name="Password" ng-model="model.Password">
             </div>
             <div class="form-group">
                 <label for="passwordRepeat">Password repeat:</label>
-                <input type="password" class="form-control" id="passwordRepeat" ng-model="model.PasswordRepeat">
-            </div>
-            <div class="checkbox">
-                <label><input type="checkbox"> Remember me</label>
+                <input type="password" class="form-control" id="passwordRepeat" name="PasswordRepeat" ng-model="model.PasswordRepeat">
             </div>
             <button type="submit" class="btn btn-default" ng-click="doSignup(model)">Submit</button>
         </div>

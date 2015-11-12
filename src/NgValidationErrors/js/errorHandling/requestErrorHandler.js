@@ -6,7 +6,7 @@
 
     var app = angular.module('errorHandling', []);
 
-    var requestErrorHandlerFactory = function($q, $log, $injector) {
+    var requestErrorHandlerFactory = function($q, $log, $injector, $rootScope) {
         return {
             // --- The user's API for claiming responsiblity for requests ---
             specificallyHandled: function(specificallyHandledBlock) {
@@ -35,6 +35,8 @@
                         toastr.error(msg, 'Server is haywire');
                     } else if (rejection.status === 400) { // user provided garbage!
                         //TODO hand the rejection over to the validation Error Decorator
+                        $rootScope.validationErrors = rejection.data.ResponseStatus.Errors;
+
                     } else {
                         toastr.error('Seems like you killed the server - we are working on it', 'Error');
                     }
@@ -43,7 +45,7 @@
             }
         };
     };
-    requestErrorHandlerFactory.$inject = ['$q', '$log', '$injector']; 
+    requestErrorHandlerFactory.$inject = ['$q', '$log', '$injector', '$rootScope']; 
     app.factory('RequestsErrorHandler', requestErrorHandlerFactory);
 
     app.config([
