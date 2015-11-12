@@ -105,6 +105,9 @@
     <Content Include="bower_components\angular-animate\index.js" />
     <Content Include="bower_components\angular-loader\angular-loader.js" />
     <Content Include="bower_components\angular-loader\angular-loader.min.js" />
+    <Content Include="bower_components\angular-messages\angular-messages.js" />
+    <Content Include="bower_components\angular-messages\angular-messages.min.js" />
+    <Content Include="bower_components\angular-messages\index.js" />
     <Content Include="bower_components\angular-mocks\angular-mocks.js" />
     <Content Include="bower_components\angular-mocks\ngAnimateMock.js" />
     <Content Include="bower_components\angular-mocks\ngMock.js" />
@@ -389,7 +392,7 @@
     <Content Include="js\errorHandling\requestErrorHandler.js" />
     <Content Include="js\signup\controllers.js" />
     <Content Include="js\navigation\controllers.js" />
-    <Content Include="js\validation\validationService.js" />
+    <Content Include="js\validation\validationDecoratorDirective.js" />
     <Content Include="partials\signup\signup.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="partials\partial1.html" />
@@ -536,6 +539,11 @@
     <Content Include="bower_components\modernizr\test\caniuse_files\Windsong-webfont.otf" />
     <Content Include="bower_components\modernizr\test\caniuse_files\Windsong-webfont.ttf" />
     <Content Include="bower_components\modernizr\test\caniuse_files\Windsong-webfont.woff" />
+    <Content Include="bower_components\angular-messages\.bower.json" />
+    <Content Include="bower_components\angular-messages\angular-messages.min.js.map" />
+    <Content Include="bower_components\angular-messages\bower.json" />
+    <Content Include="bower_components\angular-messages\package.json" />
+    <Content Include="bower_components\angular-messages\README.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
