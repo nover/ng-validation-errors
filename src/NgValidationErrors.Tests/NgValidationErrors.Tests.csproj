@@ -63,7 +63,9 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTests.cs" />
+    <Compile Include="SignUpValidatorTest.cs" />
+    <Compile Include="UnitTestBase.cs" />
+    <Compile Include="SignUpServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

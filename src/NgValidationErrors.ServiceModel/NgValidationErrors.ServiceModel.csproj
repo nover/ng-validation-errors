@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hello.cs" />
+    <Compile Include="FallbackForClientRoutes.cs" />
+    <Compile Include="SignUp.cs" />
+    <Compile Include="SignUpResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

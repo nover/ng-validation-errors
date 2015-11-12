@@ -73,8 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyServices.cs" />
+    <Compile Include="Service\FallbackRouteService.cs" />
+    <Compile Include="Service\SignUpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\SignUpValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

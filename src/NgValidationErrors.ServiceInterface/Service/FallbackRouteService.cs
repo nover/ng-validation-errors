@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using ServiceStack;
-using NgValidationErrors.ServiceModel;
 
 namespace NgValidationErrors.ServiceInterface
 {
-    public class MyServices : Service
+    public class FallbackRouteService : ServiceStack.Service
     {
-        public object Any(Hello request)
-        {
-            return new HelloResponse { Result = "Hello, {0}!".Fmt(request.Name) };
-        }
-
         public object Any(FallbackForClientRoutes request)
         {
             //Return default.cshtml for unmatched requests so routing is handled on the client
@@ -22,11 +17,5 @@ namespace NgValidationErrors.ServiceInterface
                 View = "/default.cshtml"
             };
         }
-    }
-
-    [FallbackRoute("/{PathInfo*}")]
-    public class FallbackForClientRoutes
-    {
-        public string PathInfo { get; set; }
     }
 }
