@@ -21,7 +21,8 @@ namespace NgValidationErrors.ServiceInterface.Validation
                 .WithErrorCode("LastNameEmpty");
 
             RuleFor(s => s.Password)
-                .Must((dto, password, validator) => password.Equals(dto.PasswordRepeat))
+                .NotEmpty()
+                .Must((dto, password, validator) => dto != null && password != null && password.Equals(dto.PasswordRepeat))
                 .WithErrorCode("PasswordMismatch")
                 .WithMessage("Passwords should match");
 

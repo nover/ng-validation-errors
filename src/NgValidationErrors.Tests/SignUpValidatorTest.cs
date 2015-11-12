@@ -84,5 +84,22 @@ namespace NgValidationErrors.Tests
             Assert.That(err.PropertyName, Is.EqualTo("LastName"));
             Assert.That(err.ErrorCode, Is.EqualTo("LastNameEmpty"));
         }
+
+        [Test]
+        public void TestWithNullPwd()
+        {
+            var res = _validator.Validate(new SignUp
+            {
+                DisplayName = "xx",
+                Email = "a@b.dk",
+                FirstName = "xx",
+                LastName = "xx",
+                Password = null,
+                PasswordRepeat = "two"
+            });
+
+            Assert.That(res.IsValid, Is.False, "Validation shuold not pass");
+            Assert.That(res.Errors.Count, Is.EqualTo(2));
+        }
     }
 }
