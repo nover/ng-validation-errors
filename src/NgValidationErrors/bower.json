@@ -7,13 +7,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.2.23",
-    "angular-route": "1.2.x",
-    "angular-loader": "1.2.x",
-    "angular-mocks": "~1.2.x",
+    "angular": "~1.4.x",
+    "angular-route": "~1.4.x",
+    "angular-loader": "~1.4.x",
+    "angular-mocks": "~1.4.x",
     "bootstrap": "~3.2.0",
     "modernizr": "~2.8.3",
-    "jquery": "~1.11.3" 
+    "jquery": "~1.11.3"
   },
   "ignore": [
     "**/.*",
@@ -21,5 +21,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "resolutions": {
+    "angular": "~1.4.x"
+  }
 }
