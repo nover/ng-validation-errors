@@ -7,9 +7,11 @@ using System.Reflection;
 using System.Web;
 using Funq;
 using NgValidationErrors.ServiceInterface;
+using NgValidationErrors.ServiceInterface.Validation;
 using ServiceStack;
 using ServiceStack.Configuration;
 using ServiceStack.Razor;
+using ServiceStack.Validation;
 
 namespace NgValidationErrors
 {
@@ -46,6 +48,8 @@ namespace NgValidationErrors
             });
 
             this.Plugins.Add(new RazorFormat());
+            Plugins.Add(new ValidationFeature());
+            container.RegisterValidators(typeof(SignUpValidator).Assembly);
         }
     }
 }
