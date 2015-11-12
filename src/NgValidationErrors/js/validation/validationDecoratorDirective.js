@@ -14,7 +14,7 @@
 
                 $log.info("validation errors have changed", validationErrors);
                 validationErrors.forEach(function(item) {
-                    var $elm = element.find("input[name=" + item.FieldName + ']');
+                    var $elm = element.find("input[name=" + item.FieldName + "]");
                     if (! $elm) {
                         return;
                     }

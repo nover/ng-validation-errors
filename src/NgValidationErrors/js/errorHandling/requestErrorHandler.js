@@ -1,10 +1,10 @@
 ﻿/* global angular */
 // code taken and adapted from article: http://www.codelord.net/2014/06/25/generic-error-handling-in-angularjs/
 (function() {
-    var HEADER_NAME = 'MyApp-Handle-Errors-Generically';
+    var HEADER_NAME = "MyApp-Handle-Errors-Generically";
     var specificallyHandleInProgress = false;
 
-    var app = angular.module('errorHandling', []);
+    var app = angular.module("errorHandling", []);
 
     var requestErrorHandlerFactory = function($q, $log, $injector, $rootScope) {
         return {
@@ -25,32 +25,32 @@
 
                 if (shouldHandle) {
                     $log.error(rejection);
-                    var toastr = $injector.get('toastr');
+                    var toastr = $injector.get("toastr");
 
                     if (rejection.status === 500) {
-                        var msg = 'Something terrible went wrong there.';
+                        var msg = "Something terrible went wrong there.";
                         if (rejection.data.ResponseStatus) {
                             msg = rejection.data.ResponseStatus.Message;
                         }
-                        toastr.error(msg, 'Server is haywire');
+                        toastr.error(msg, "Server is haywire");
                     } else if (rejection.status === 400) { // user provided garbage!
                         //TODO hand the rejection over to the validation Error Decorator
                         $rootScope.validationErrors = rejection.data.ResponseStatus.Errors;
 
                     } else {
-                        toastr.error('Seems like you killed the server - we are working on it', 'Error');
+                        toastr.error("Seems like you killed the server - we are working on it", "Error");
                     }
                 }
                 return $q.reject(rejection);
             }
         };
     };
-    requestErrorHandlerFactory.$inject = ['$q', '$log', '$injector', '$rootScope']; 
-    app.factory('RequestsErrorHandler', requestErrorHandlerFactory);
+    requestErrorHandlerFactory.$inject = ["$q", "$log", "$injector", "$rootScope"]; 
+    app.factory("RequestsErrorHandler", requestErrorHandlerFactory);
 
     app.config([
-        '$provide', '$httpProvider', function($provide, $httpProvider) {
-            $httpProvider.interceptors.push('RequestsErrorHandler');
+        "$provide", "$httpProvider", function($provide, $httpProvider) {
+            $httpProvider.interceptors.push("RequestsErrorHandler");
 
             // --- Decorate $http to add a special header by default ---
 
@@ -67,8 +67,8 @@
             }
 
             // The rest here is mostly boilerplate needed to decorate $http safely
-            $provide.decorator('$http', [
-                '$delegate', function($delegate) {
+            $provide.decorator("$http", [
+                "$delegate", function($delegate) {
                     function decorateRegularCall(method) {
                         return function(url, config) {
                             return $delegate[method](url, addHeaderToConfig(config));
@@ -84,7 +84,7 @@
                     function copyNotOverriddenAttributes(newHttp) {
                         for (var attr in $delegate) {
                             if (!newHttp.hasOwnProperty(attr)) {
-                                if (typeof ($delegate[attr]) === 'function') {
+                                if (typeof ($delegate[attr]) === "function") {
                                     newHttp[attr] = function() {
                                         return $delegate[attr].apply($delegate, arguments);
                                     };
@@ -99,12 +99,12 @@
                         return $delegate(addHeaderToConfig(config));
                     };
 
-                    newHttp.get = decorateRegularCall('get');
-                    newHttp.delete = decorateRegularCall('delete');
-                    newHttp.head = decorateRegularCall('head');
-                    newHttp.jsonp = decorateRegularCall('jsonp');
-                    newHttp.post = decorateDataCall('post');
-                    newHttp.put = decorateDataCall('put');
+                    newHttp.get = decorateRegularCall("get");
+                    newHttp.delete = decorateRegularCall("delete");
+                    newHttp.head = decorateRegularCall("head");
+                    newHttp.jsonp = decorateRegularCall("jsonp");
+                    newHttp.post = decorateDataCall("post");
+                    newHttp.put = decorateDataCall("put");
 
                     copyNotOverriddenAttributes(newHttp);
 
