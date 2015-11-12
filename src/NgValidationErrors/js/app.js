@@ -4,12 +4,16 @@
     // Declare app level module which depends on filters, and services
     var module = angular.module('helloApp', [
         'ngRoute',
+        'ngAnimate',
+        'ngMessage',
+        'toastr',
         'helloApp.controllers',
-        'navigation.controllers'
+        'navigation.controllers',
+        'errorHandling'
     ]);
 
     module.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-        $routeProvider.when('/', { templateUrl: '/partials/hello/hello.html', controller: 'helloCtrl' });
+        $routeProvider.when('/', { templateUrl: '/partials/signup/signup.html', controller: 'signUpCtrl' });
         $routeProvider.when('/view1', { templateUrl: '/partials/partial1.html' });
         $routeProvider.when('/view2', { templateUrl: '/partials/partial2.html' });
         $routeProvider.when('/404', { templateUrl: '/partials/404.html' });
