@@ -16,7 +16,8 @@
     "jquery": "~1.11.3",
     "angular-toastr": "~1.5.0",
     "angular-animate": "~1.4.7",
-    "angular-messages": "~1.4.7"
+    "angular-messages": "~1.4.7",
+    "lodash": "~3.10.1"
   },
   "ignore": [
     "**/.*",
