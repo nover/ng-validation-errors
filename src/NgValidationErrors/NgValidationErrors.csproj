@@ -235,6 +235,8 @@
     <Content Include="bower_components\jquery\src\var\support.js" />
     <Content Include="bower_components\jquery\src\var\toString.js" />
     <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="bower_components\lodash\lodash.js" />
+    <Content Include="bower_components\lodash\lodash.min.js" />
     <Content Include="bower_components\modernizr\.gitignore" />
     <Content Include="bower_components\modernizr\feature-detects\a-download.js" />
     <Content Include="bower_components\modernizr\feature-detects\audio-audiodata-api.js" />
@@ -393,6 +395,7 @@
     <Content Include="js\signup\controllers.js" />
     <Content Include="js\navigation\controllers.js" />
     <Content Include="js\validation\validationDecoratorDirective.js" />
+    <Content Include="js\validation\validationMessageDecoratorDirective.js" />
     <Content Include="partials\signup\signup.html" />
     <Content Include="Scripts\_references.js" />
     <Content Include="partials\partial1.html" />
@@ -544,6 +547,9 @@
     <Content Include="bower_components\angular-messages\bower.json" />
     <Content Include="bower_components\angular-messages\package.json" />
     <Content Include="bower_components\angular-messages\README.md" />
+    <Content Include="bower_components\lodash\.bower.json" />
+    <Content Include="bower_components\lodash\bower.json" />
+    <Content Include="bower_components\lodash\LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

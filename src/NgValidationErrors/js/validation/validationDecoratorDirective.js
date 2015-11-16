@@ -1,8 +1,11 @@
-﻿/* global angular */
+﻿/* 
+global angular 
+global _
+*/
 (function () {
-    var app = angular.module("validationDecorator", []);
+    var app = angular.module("validationDecorator");
 
-    var validationDecoratorDirective = function ($log, $rootScope) {
+    var validationDecoratorDirective = function ($log, $rootScope, $compile) {
         function link(scope, element, attrs) {
             $log.info("in link of validation decorator directive");
             // target da element
@@ -13,15 +16,55 @@
                 }
 
                 $log.info("validation errors have changed", validationErrors);
+                var vErr= _.groupBy(validationErrors, function (item) {
+
+                    return item.FieldName;
+                }, {});
+
+                _.forEach(vErr, function(item, fieldName) {
+                    $log.info(item);
+
+                    var messages = _.map(item, function(m) {
+                        return m.Message;
+                    });
+
+                    var $elm = element.find("input[name=" + fieldName + "]");
+                    if (!$elm) {
+                        return;
+                    }
+
+                    var $div = $elm.parent();
+                    $div.addClass("has-error");
+
+                    var help = angular.element($div.find("span.help-block"));
+                    if (!help || help.length === 0) {
+                        help = angular.element('<span validation-message-decorator/>');
+                        $div.append(help);
+                    }
+
+                    help.attr("messagesjson", JSON.stringify(messages));
+                    $compile(help)(scope);
+                    
+                });
+                /*
                 validationErrors.forEach(function(item) {
                     var $elm = element.find("input[name=" + item.FieldName + "]");
                     if (! $elm) {
                         return;
                     }
 
-                    $elm.attr("data-is-valid", false);
-                    $elm.attr("data-error-code", item.ErrorCode);
-                });
+                    var $div = $elm.parent();
+                    $div.addClass("has-error");
+
+                    var help = angular.element($div.find("span.help-block"));
+                    if (!help || help.length === 0) {
+                        help = angular.element('<span validation-message-decorator/>');
+                        $div.append(help);
+                    }
+
+                    help.attr('message', item.Message);
+                    $compile(help)(scope);
+                });*/
             });
         }
 
@@ -30,6 +73,6 @@
             link: link
         };
     }
-    validationDecoratorDirective.$inject = ["$log", "$rootScope"];
+    validationDecoratorDirective.$inject = ["$log", "$rootScope", "$compile"];
     app.directive("validationDecorator", validationDecoratorDirective);
 })();
