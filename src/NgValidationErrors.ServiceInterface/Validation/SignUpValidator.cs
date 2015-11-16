@@ -14,11 +14,13 @@ namespace NgValidationErrors.ServiceInterface.Validation
         {
             RuleFor(s => s.FirstName)
                 .NotEmpty()
-                .WithErrorCode("FirstNameEmpty");
+                .WithErrorCode("FirstNameEmpty")
+                .WithMessage("Du skal skrive et fornavn");
 
             RuleFor(s => s.LastName)
                 .NotEmpty()
-                .WithErrorCode("LastNameEmpty");
+                .WithErrorCode("LastNameEmpty")
+                .WithMessage("Du skal skrive et efternavn");
 
             RuleFor(s => s.Password)
                 .NotEmpty()
