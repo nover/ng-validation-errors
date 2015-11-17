@@ -5,8 +5,10 @@
     var specificallyHandleInProgress = false;
 
     var app = angular.module("errorHandling", []);
+    app.factory("RequestsErrorHandler", requestErrorHandlerFactory);
 
-    var requestErrorHandlerFactory = function($q, $log, $injector, $rootScope) {
+    requestErrorHandlerFactory.$inject = ["$q", "$log", "$injector", "$rootScope"];
+    function requestErrorHandlerFactory ($q, $log, $injector, $rootScope) {
         return {
             // --- The user's API for claiming responsiblity for requests ---
             specificallyHandled: function(specificallyHandledBlock) {
@@ -31,7 +33,7 @@
             // --- Response interceptor for handling errors generically ---
             responseError: function(rejection) {
                 var shouldHandle = (rejection && rejection.config && rejection.config.headers
-                    && rejection.config.headers[HEADER_NAME]);
+                   && rejection.config.headers[HEADER_NAME]);
 
                 if (shouldHandle) {
                     $log.error(rejection);
@@ -44,7 +46,6 @@
                         }
                         toastr.error(msg, "Server is haywire");
                     } else if (rejection.status === 400) { // user provided garbage!
-                        //TODO hand the rejection over to the validation Error Decorator
                         $rootScope.validationErrors = rejection.data.ResponseStatus.Errors;
 
                     } else {
@@ -55,8 +56,8 @@
             }
         };
     };
-    requestErrorHandlerFactory.$inject = ["$q", "$log", "$injector", "$rootScope"]; 
-    app.factory("RequestsErrorHandler", requestErrorHandlerFactory);
+    
+    
 
     app.config([
         "$provide", "$httpProvider", function($provide, $httpProvider) {

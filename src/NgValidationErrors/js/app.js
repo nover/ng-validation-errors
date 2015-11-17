@@ -10,7 +10,7 @@
         "navigation.controllers",
         "users.controllers",
         "errorHandling",
-        "validationDecorator"
+        "ssValidationDecorator"
     ]);
 
     module.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {

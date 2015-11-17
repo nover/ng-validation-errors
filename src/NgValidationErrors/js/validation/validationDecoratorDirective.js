@@ -4,13 +4,12 @@ global _
 */
 (function () {
     angular
-        .module("validationDecorator")
+        .module("ssValidationDecorator", [])
         .directive("validationDecorator", validationDecoratorDirective);
 
     validationDecoratorDirective.$inject = ["$log", "$rootScope", "$compile"];
     function validationDecoratorDirective ($log, $rootScope, $compile) {
         function linkFn(scope, element, attrs) {
-            $log.info("in link of validation decorator directive");
             // target da element
             $rootScope.$watch("validationErrors", watchCallback);
 
@@ -30,7 +29,8 @@ global _
                     return;
                 }
 
-                // group the validation errors by the FieldName - servicestack returns an array of errors so there can be multiple validation error elemets for a single input field
+                // group the validation errors by the FieldName - servicestack returns an array of errors so there can be multiple 
+                // validation error elemets for a single input field
                 var vErr= _.groupBy(validationErrors, function (item) {
                     return item.FieldName;
                 }, {});
