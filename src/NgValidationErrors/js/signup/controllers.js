@@ -1,9 +1,12 @@
 ﻿/* global angular */
 (function () {
     "use strict";
-    var app = angular.module("helloApp.controllers", []);
+    angular
+        .module("helloApp.controllers", [])
+        .controller("signUpCtrl", signUpController);
 
-    var controller = function ($scope, $http, $log) {
+    signUpController.$inject = ["$scope", "$http", "$log"];
+    function signUpController ($scope, $http, $log) {
         $scope.doSignup = function (model) {
             $http.post("/signup", model)
                 .then(function(data) {
@@ -15,7 +18,4 @@
             return true;
         };
     }
-    controller.$inject = ["$scope", "$http", "$log"];
-    app.controller("signUpCtrl", controller);
 })();
-
