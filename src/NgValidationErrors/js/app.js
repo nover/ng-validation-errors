@@ -8,14 +8,14 @@
         "toastr",
         "helloApp.controllers",
         "navigation.controllers",
+        "users.controllers",
         "errorHandling",
         "validationDecorator"
     ]);
 
     module.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
         $routeProvider.when("/", { templateUrl: "/partials/signup/signup.html", controller: "signUpCtrl" });
-        $routeProvider.when("/view1", { templateUrl: "/partials/partial1.html" });
-        $routeProvider.when("/view2", { templateUrl: "/partials/partial2.html" });
+        $routeProvider.when("/users", { templateUrl: "/partials/users/list.html", controller: "userListCtrl" });
         $routeProvider.when("/404", { templateUrl: "/partials/404.html" });
         $routeProvider.otherwise({ redirectTo: "/404" });
 

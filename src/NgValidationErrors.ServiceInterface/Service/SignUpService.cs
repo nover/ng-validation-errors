@@ -17,5 +17,20 @@ namespace NgValidationErrors.ServiceInterface
             newUser.Id =(int)Db.Insert(newUser);
             return newUser.ConvertTo<SignUpResponse>();
         }
+
+        public object Get(ListUsers request)
+        {
+            var users = Db.Select<User>();
+
+            return new ListUsersResponse
+            {
+                Users = users.ConvertAll(u => new UserDto
+                {
+                    Id = u.Id,
+                    Name = $"{u.FirstName} {u.LastName}",
+                    Email =  u.Email
+                })
+            };
+        }
     }
 }

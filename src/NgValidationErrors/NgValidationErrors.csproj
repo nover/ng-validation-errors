@@ -404,11 +404,12 @@
     <Content Include="js\errorHandling\requestErrorHandler.js" />
     <Content Include="js\signup\controllers.js" />
     <Content Include="js\navigation\controllers.js" />
+    <Content Include="js\users\userListController.js" />
     <Content Include="js\validation\validationDecoratorDirective.js" />
     <Content Include="js\validation\validationMessageDecoratorDirective.js" />
     <Content Include="partials\signup\signup.html" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="partials\partial1.html" />
+    <Content Include="partials\users\list.html" />
     <Content Include="partials\partial2.html" />
     <Content Include="partials\404.html" />
     <Content Include="tests\karma.conf.js" />

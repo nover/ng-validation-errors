@@ -1,0 +1,19 @@
+﻿<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="usr in users.Users">
+                <td>{{usr.Id}}</td>
+                <td>{{usr.Name}}</td>
+                <td>{{usr.Email}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
