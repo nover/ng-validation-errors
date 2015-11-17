@@ -5,7 +5,7 @@
     var HEADER_NAME = "ng-generic-error-handler-module";
     var specificallyHandleInProgress = false;
 
-    var app = angular.module("requestErrorHandler", []);
+    var app = angular.module("ngGlobalRequestErrorHandler", []);
     app.provider("requestErrorHandler", function requestErrorHandlerProvider() {
 
         // default response error function

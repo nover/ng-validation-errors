@@ -9,7 +9,7 @@
         "helloApp.controllers",
         "navigation.controllers",
         "users.controllers",
-        "requestErrorHandler",
+        "ngGlobalRequestErrorHandler",
         "ssValidationDecorator"
     ]);
 
