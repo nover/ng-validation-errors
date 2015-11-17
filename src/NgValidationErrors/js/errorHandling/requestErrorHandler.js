@@ -21,7 +21,7 @@
             response: function(response) {
                 var shouldHandle = (response && response.config && response.config.headers
                     && response.config.headers[HEADER_NAME]);
-                debugger;
+                
                 if (!shouldHandle) return response;
 
                 $rootScope.validationErrors = null;
