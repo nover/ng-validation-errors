@@ -3,13 +3,18 @@ global angular
 global _
 */
 (function () {
-    var app = angular.module("validationDecorator");
+    angular
+        .module("validationDecorator")
+        .directive("validationDecorator", validationDecoratorDirective);
 
-    var validationDecoratorDirective = function ($log, $rootScope, $compile) {
+    validationDecoratorDirective.$inject = ["$log", "$rootScope", "$compile"];
+    function validationDecoratorDirective ($log, $rootScope, $compile) {
         function link(scope, element, attrs) {
             $log.info("in link of validation decorator directive");
             // target da element
-            $rootScope.$watch("validationErrors", function () {
+            $rootScope.$watch("validationErrors", watchCallback);
+
+            function watchCallback() {
                 var validationErrors = $rootScope.validationErrors;
                 if (!validationErrors) {
                     return;
@@ -46,33 +51,11 @@ global _
                     $compile(help)(scope);
                     
                 });
-                /*
-                validationErrors.forEach(function(item) {
-                    var $elm = element.find("input[name=" + item.FieldName + "]");
-                    if (! $elm) {
-                        return;
-                    }
-
-                    var $div = $elm.parent();
-                    $div.addClass("has-error");
-
-                    var help = angular.element($div.find("span.help-block"));
-                    if (!help || help.length === 0) {
-                        help = angular.element('<span validation-message-decorator/>');
-                        $div.append(help);
-                    }
-
-                    help.attr('message', item.Message);
-                    $compile(help)(scope);
-                });*/
-            });
+            }
         }
-
         return {
             restrict: "A",
             link: link
         };
     }
-    validationDecoratorDirective.$inject = ["$log", "$rootScope", "$compile"];
-    app.directive("validationDecorator", validationDecoratorDirective);
 })();

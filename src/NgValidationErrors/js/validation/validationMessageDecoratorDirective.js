@@ -1,7 +1,11 @@
 ﻿/* global angular */
 (function () {
     var app = angular.module("validationDecorator", []);
-    var validationMessageDecoratorDirective = function($log) {
+    app.directive("validationMessageDecorator", validationMessageDecoratorDirective);
+
+    validationMessageDecoratorDirective.$inject = ["$log"];
+
+    function validationMessageDecoratorDirective ($log) {
         function link(scope, element, attr) {
             $log.info("inside val msg decorator linker");
             scope.$watch('messagesjson', function () {
@@ -20,8 +24,4 @@
             template: '<span class="help-block with-errors"><ul class="list-unstyled"><li ng-repeat="msg in messages track by $index">{{msg}}</li></ul></span>'
         };
     };
-
-    validationMessageDecoratorDirective.$inject = ["$log"];
-
-    app.directive("validationMessageDecorator", validationMessageDecoratorDirective);
 })();
