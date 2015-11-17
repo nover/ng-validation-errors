@@ -10,7 +10,8 @@
         $scope.doSignup = function (model) {
             $http.post("/signup", model)
                 .then(function(response) {
-                    toast.success('User with id: ' + response.data.Id + ' created', 'Alls ok');
+                    toast.success("User with id: " + response.data.Id + " created", "Alls ok");
+                    $scope.model = null;
                 });
         }
 
