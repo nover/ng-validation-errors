@@ -18,6 +18,16 @@
                 }
             },
 
+            response: function(response) {
+                var shouldHandle = (response && response.config && response.config.headers
+                    && response.config.headers[HEADER_NAME]);
+                debugger;
+                if (!shouldHandle) return response;
+
+                $rootScope.validationErrors = null;
+                return response;
+            },
+
             // --- Response interceptor for handling errors generically ---
             responseError: function(rejection) {
                 var shouldHandle = (rejection && rejection.config && rejection.config.headers
