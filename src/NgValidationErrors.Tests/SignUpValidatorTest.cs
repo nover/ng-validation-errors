@@ -37,7 +37,7 @@ namespace NgValidationErrors.Tests
             Assert.That(res.Errors.Count, Is.EqualTo(1), "Only one error was expected");
             var err = res.Errors.First();
 
-            Assert.That(err.PropertyName, Is.EqualTo("Password"));
+            Assert.That(err.PropertyName, Is.EqualTo("PasswordRepeat"));
             Assert.That(err.ErrorCode, Is.EqualTo("PasswordMismatch"));
         }
 
