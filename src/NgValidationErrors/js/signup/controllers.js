@@ -5,12 +5,12 @@
         .module("helloApp.controllers", [])
         .controller("signUpCtrl", signUpController);
 
-    signUpController.$inject = ["$scope", "$http", "$log"];
-    function signUpController ($scope, $http, $log) {
+    signUpController.$inject = ["$scope", "$http", "$log", "toastr"];
+    function signUpController ($scope, $http, $log, toast) {
         $scope.doSignup = function (model) {
             $http.post("/signup", model)
-                .then(function(data) {
-                    $scope.allsOk = "yes";
+                .then(function(response) {
+                    toast.success('User with id: ' + response.data.Id + ' created', 'Alls ok');
                 });
         }
 

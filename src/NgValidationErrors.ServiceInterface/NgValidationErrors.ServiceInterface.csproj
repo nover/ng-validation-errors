@@ -73,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Service\FallbackRouteService.cs" />
     <Compile Include="Service\SignUpService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

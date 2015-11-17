@@ -7,9 +7,12 @@ using System.Reflection;
 using System.Web;
 using Funq;
 using NgValidationErrors.ServiceInterface;
+using NgValidationErrors.ServiceInterface.Domain;
 using NgValidationErrors.ServiceInterface.Validation;
 using ServiceStack;
 using ServiceStack.Configuration;
+using ServiceStack.Data;
+using ServiceStack.OrmLite;
 using ServiceStack.Razor;
 using ServiceStack.Validation;
 
@@ -50,6 +53,14 @@ namespace NgValidationErrors
             this.Plugins.Add(new RazorFormat());
             Plugins.Add(new ValidationFeature());
             container.RegisterValidators(typeof(SignUpValidator).Assembly);
+
+            container.Register<IDbConnectionFactory>(c =>
+                new OrmLiteConnectionFactory("Data Source=c:\\mydb.db;Version=3;", SqliteDialect.Provider));
+
+            using (var db = container.Resolve<IDbConnectionFactory>().Open())
+            {
+                db.CreateTableIfNotExists<User>();
+            }
         }
     }
 }

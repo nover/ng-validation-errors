@@ -99,7 +99,7 @@ namespace NgValidationErrors.Tests
             });
 
             Assert.That(res.IsValid, Is.False, "Validation shuold not pass");
-            Assert.That(res.Errors.Count, Is.EqualTo(1));
+            Assert.That(res.Errors.Count, Is.EqualTo(2));
         }
 
         [Test]

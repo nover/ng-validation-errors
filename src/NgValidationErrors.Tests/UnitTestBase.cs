@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NgValidationErrors.ServiceInterface;
+using NgValidationErrors.ServiceInterface.Domain;
 using NUnit.Framework;
 using ServiceStack;
+using ServiceStack.Data;
+using ServiceStack.OrmLite;
 using ServiceStack.Testing;
 
 namespace NgValidationErrors.Tests
@@ -24,6 +27,14 @@ namespace NgValidationErrors.Tests
                 ConfigureContainer = container =>
                 {
                     //Add your IoC dependencies here
+                    container.Register<IDbConnectionFactory>(c =>
+                        new OrmLiteConnectionFactory(":memory:", SqliteDialect.Provider)); //InMemory Sqlite DB
+
+
+                    using (var db = container.Resolve<IDbConnectionFactory>().Open())
+                    {
+                        db.CreateTable<User>();
+                    }
                 }
             }
             .Init();

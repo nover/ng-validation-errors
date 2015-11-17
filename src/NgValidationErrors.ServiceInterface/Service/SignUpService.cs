@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NgValidationErrors.ServiceInterface.Domain;
 using ServiceStack;
 using NgValidationErrors.ServiceModel;
+using ServiceStack.OrmLite;
 
 namespace NgValidationErrors.ServiceInterface
 {
@@ -11,7 +13,9 @@ namespace NgValidationErrors.ServiceInterface
     {
         public object Post(SignUp request)
         {
-            throw new NotImplementedException();
+            var newUser = request.ConvertTo<User>();
+            newUser.Id =(int)Db.Insert(newUser);
+            return newUser.ConvertTo<SignUpResponse>();
         }
     }
 }
