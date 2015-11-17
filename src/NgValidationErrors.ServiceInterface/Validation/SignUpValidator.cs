@@ -24,14 +24,19 @@ namespace NgValidationErrors.ServiceInterface.Validation
 
             RuleFor(s => s.Password)
                 .NotEmpty()
-                .Must((dto, password, validator) => dto != null && password != null && password.Equals(dto.PasswordRepeat))
+                .WithMessage("Du skal skrive et password");
+
+            RuleFor(s => s.PasswordRepeat)
+                .NotEmpty().WithMessage("Du skal skrive din kode igen")
+                .Must((dto, pwdRepeat, validator) => dto != null && pwdRepeat != null && pwdRepeat.Equals(dto.Password))
                 .WithErrorCode("PasswordMismatch")
-                .WithMessage("Passwords should match");
+                .WithMessage("Dine koder skal være ens");
 
             RuleFor(s => s.Email)
+                .NotEmpty().WithMessage("Du skal angive en email addresse")
                 .EmailAddress()
                 .WithErrorCode("EmailInvalid")
-                .WithMessage("Invalid email");
+                .WithMessage("Indtast en gyldig email addresse");
         }
     }
 }

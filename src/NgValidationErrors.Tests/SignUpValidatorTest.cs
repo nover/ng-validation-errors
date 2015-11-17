@@ -99,6 +99,23 @@ namespace NgValidationErrors.Tests
             });
 
             Assert.That(res.IsValid, Is.False, "Validation shuold not pass");
+            Assert.That(res.Errors.Count, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void TestWithNullPwdRepeat()
+        {
+            var res = _validator.Validate(new SignUp
+            {
+                DisplayName = "xx",
+                Email = "a@b.dk",
+                FirstName = "xx",
+                LastName = "xx",
+                Password = "one",
+                PasswordRepeat = null
+            });
+
+            Assert.That(res.IsValid, Is.False, "Validation shuold not pass");
             Assert.That(res.Errors.Count, Is.EqualTo(2));
         }
     }
